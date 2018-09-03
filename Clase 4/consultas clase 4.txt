@@ -1,0 +1,69 @@
+select l.localidad, p.provincia from localidades as L
+inner join provincias as p ON l.idprovincia = p.idprovincia
+where l.cp between 3000 and 4000
+
+select l.localidad, p.provincia from localidades as l
+right join provincias as p on l.idprovincia = p.idprovincia
+
+
+select s.nombre, s.direccion, s.telefono, l.localidad
+from sedes as s
+inner join localidades as l on l.cp = s.cp
+
+
+select l.localidad, s.nombre from localidades as l
+left join sedes as s on l.cp =s.cp 
+
+2c
+
+select s.nombre, s.direccion, l.localidad, p.provincia
+from sedes as s
+inner join localidades as l on l.cp=s.cp
+inner join provincias as p on p.idprovincia=l.idprovincia
+
+3
+
+select p.fecha, p.mes, p.año, p.importe, s.nombres, s.apellido
+from pagos as p
+inner join socios as s on p.legajo = s.legajo
+
+
+select p.fecha, p.mes, p.año, p.importe, s.nombres, s.apellido
+from pagos as p
+right join socios as s on p.legajo = s.legajo order by p.fecha
+
+
+////////////7
+
+select sc.nombres, sc.apellido, a.nombre, a.tipo, a.costo, s.nombre
+from socios as sc 
+inner join actividades_x_socio as axs on  axs.legajo=sc.legajo
+inner join actividades as a on a.idactividad=axs.idactividad
+inner join sedes as s on s.idsede=a.idsede
+
+//////////////////////////////
+select sc.nombres, sc.apellido, a.nombre, 
+case a.tipo
+when 'i' THEN 'INDIVIDUAL'
+when 'e' THEN 'EQUIPO'
+END AS TIPO_TEXTUAL,
+a.costo, s.nombre
+from socios as sc 
+inner join actividades_x_socio as axs on  axs.legajo=sc.legajo
+inner join actividades as a on a.idactividad=axs.idactividad
+inner join sedes as s on s.idsede=a.idsede
+
+//////////////////////////
+
+select s.*, a.costo
+from socios as s
+inner join actividades_x_socio as axs
+on s.legajo=axs.legajo
+inner join actividades as a 
+on axs.idactividad =a.idactividad
+where a.costo >3000
+
+/////////////
+modificar valores tabla
+alter table registro add constraint anggel foreign key (idusuario) references usuario (id) 
+

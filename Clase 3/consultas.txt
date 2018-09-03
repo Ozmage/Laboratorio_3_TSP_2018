@@ -1,0 +1,15 @@
+select a.descripcion, a.pu, a.stock, m.descripcion as marca from articulos as a
+inner join marcas as m on a.idmarca=m.idmarca
+
+select a.descripcion, a.pu, a.stock, m.descripcion as marca from articulos as a
+left join marcas as m on a.idmarca=m.idmarca
+
+select v.idventa, c.nombre, c.apellido, l.nombre from ventas as v 
+inner join clientes as c on v.dni=c.dni
+inner join localidades as l  on l.idlocalidad =c.idlocalidad
+
+select v.idventa, v.fecha, 
+
+
+////////////////
+select a.descripcion, m.descripcion from marcas as m cross join articulos as a

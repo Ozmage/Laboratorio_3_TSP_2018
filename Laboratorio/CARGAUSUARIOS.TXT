@@ -1,0 +1,17 @@
+INSERT INTO USUARIO (ID, APELLIDOS, NOMBRES, FECHAREGISTRO, CLAVE, MAIL)
+VALUES
+('2', 'Gutierrez', 'Mariela', '2000-01-01','1111','mariela@utnfrgp.com')
+
+go
+
+INSERT INTO USUARIO (ID, APELLIDOS, NOMBRES, FECHAREGISTRO, CLAVE, MAIL)
+VALUES
+('3', 'Velez', 'Pablo', '2000-01-01','1111','pablo@utnfrgp.com')
+
+go
+
+INSERT INTO USUARIO (ID, APELLIDOS, NOMBRES, FECHAREGISTRO, CLAVE, MAIL)
+VALUES
+('4', 'Perez', 'Candela', '2000-01-01','1111','candela@utnfrgp.com')
+
+go
