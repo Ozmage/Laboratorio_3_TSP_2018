@@ -67,11 +67,17 @@ GROUP BY S.DIRECCION
 -- 9) Por cada localidad, mostrar el nombre de la localidad y la cantidad de sedes ubicadas en ellas.
 
 
+
 SELECT L.LOCALIDAD, COUNT(*) AS CANT FROM LOCALIDADES AS L
 INNER JOIN SEDES AS S ON S.CP =L.CP
 GROUP BY L.LOCALIDAD
 
+
 -- 10) Igual al anterior, pero listar también las localidades que no tienen sedes en ellas.
+
+SELECT L.LOCALIDAD, COUNT(*) AS CANT FROM LOCALIDADES AS L
+LEFT JOIN SEDES AS S ON S.CP =L.CP
+GROUP BY L.LOCALIDAD
 
 -- 11) Por cada socio, listar el nombre y apellido y la cantidad de actividades que realiza cada uno.
 
