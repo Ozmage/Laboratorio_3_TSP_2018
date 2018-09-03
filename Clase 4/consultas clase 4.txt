@@ -33,7 +33,7 @@ from pagos as p
 right join socios as s on p.legajo = s.legajo order by p.fecha
 
 
-////////////7
+////////////
 
 select sc.nombres, sc.apellido, a.nombre, a.tipo, a.costo, s.nombre
 from socios as sc 
@@ -62,6 +62,16 @@ on s.legajo=axs.legajo
 inner join actividades as a 
 on axs.idactividad =a.idactividad
 where a.costo >3000
+
+select c.nombre, c.apellido 
+from clientes
+inner join localidades as l
+
+
+where pais
+
+
+
 
 /////////////
 modificar valores tabla

@@ -1,0 +1,90 @@
+-- 1) La cantidad de socios
+
+//COUNT VA A CONTAR CANTIDAD DE FILAS EN TABLA DE SOCIOS
+// VARIAS FILAS Y COLUMNAS MATRIZ, SINO COLUMNA VECTOR,  UN SOLO DATO DE RESULTADO ES UN VALOR ESCALAR
+// UNA FECHA TAMBIEN ES UN DATO ESCALAR
+SELECT * FROM SOCIOS
+SELECT COUNT (*) AS CANT FROM SOCIOS
+
+
+
+
+-- 2) La cantidad de actividades de equipo.
+
+SELECT * FROM ACTIVIDADES
+WHERE TIPO="e"
+
+SELECT COUNT (*) AS CANT FROM ACTIVIDADES WHERE TIPO ="E"
+
+
+-- 3) La suma de todos los pagos realizados.
+
+SELECT SUM(IMPORTE) AS TOTAL FROM PAGOS
+
+-- 4) La suma de todos los pagos en Julio de 2018.
+// COUNT TRATA DE CONTAR Y DEVUELVE VALOR, AVG SI NO HAY DATOS PONE NULL
+// PARA CONVERTIR UN VALOR NULO A 0 ISNULLL       SELECT ISNULL (SUM(IMPORTE),0) AS TOTAL FROM PAGOS
+
+SELECT * SUM (IMPORTE) AS TOTAL FRO PAGOS
+WHERE AÑO =2018 AND MES = 7
+
+
+-- 5) El promedio de costo de las actividades.
+
+
+SELECT SUM (COSTO)/COUNT(*) AS PROM FROM ACTIVIDADES
+
+-- 6) El costo máximo de las actividades individuales.
+
+SELECT MAX(COSTO) FROM ACTIVIDADES WHERE TIPO ="I"
+SELECT TOP 1 COSTO FROM ACTIVIDADES WHERE TIPO ="i"
+ORDER BY COSTO DESC
+
+-- 7) El pago mínimo entre todos los pagos.
+
+SELECT MIN (IMPORTE) AS MINI FROM PAGOS
+WHERE AÑO=2019
+
+-- 7 BIS CANTIDAD DE ACTIVIDADES POR TIPO
+// COUNT COLUMNA CUENTA LOS DATOS DE LA COLUMNA SI NO TIENE NULL.
+// COUNT * CUENTA LAS FILAS Y LOS NULLS TAMBIEN
+
+SELECT TIPO, COUNT(*) AS CANT FROM ACTIVIDADES
+GROUP BY TIPO
+
+//SI AGRUPO HAY QUE PONER EL GROUP BY
+-- 8) Por cada sede, mostrar la dirección y la cantidad de actividades que se realizan en ellas.
+
+SELECT * FROM SEDES
+SELECT S.DIRECCION, COUNT (*) FROM SEDES AS S
+INNER JOIN ACTIVIDADES AS A ON S.IDSEDE =A.IDSEDE
+GROUP BY S.DIRECCION
+
+//DESAGRAGADO ES SIN AGRUPAR POR CRITERIOS
+
+
+
+-- 9) Por cada localidad, mostrar el nombre de la localidad y la cantidad de sedes ubicadas en ellas.
+
+
+SELECT L.LOCALIDAD, COUNT(*) AS CANT FROM LOCALIDADES AS L
+INNER JOIN SEDES AS S ON S.CP =L.CP
+GROUP BY L.LOCALIDAD
+
+-- 10) Igual al anterior, pero listar también las localidades que no tienen sedes en ellas.
+
+-- 11) Por cada socio, listar el nombre y apellido y la cantidad de actividades que realiza cada uno.
+
+-- 12) Igual al anterior pero listar a los socios que sólo realicen una actividad.
+
+-- 13) Por cada socio, listar el nombre y apellido y la cantidad de pagos realizados.
+
+-- 14) Igual al anterior pero solamente listar aquellos socios con cero cantidad de pagos realizados.
+
+-- 15) Por cada socio, listar el nombre y apellido y el total abonado en concepto de pagos.
+
+-- 16) Igual al anterior pero sólo listar los socios que hayan abonado más de $1000 en total en concepto de pagos.
+
+-- 17) Por cada socio, listar el máximo monto abonado en concepto de pagos.
+
+-- 18) La cantidad de socios que realicen alguna actividad en equipo.

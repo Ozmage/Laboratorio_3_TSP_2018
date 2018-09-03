@@ -1,0 +1,2 @@
+//CONFIGURAR FORMATO FECHA
+set date format 'DMY'
