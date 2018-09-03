@@ -81,6 +81,9 @@ GROUP BY L.LOCALIDAD
 
 -- 11) Por cada socio, listar el nombre y apellido y la cantidad de actividades que realiza cada uno.
 
+
+
+
 -- 12) Igual al anterior pero listar a los socios que sólo realicen una actividad.
 
 -- 13) Por cada socio, listar el nombre y apellido y la cantidad de pagos realizados.
