@@ -1,0 +1,54 @@
+Actividad con Consultas de Selección
+La siguiente actividad propone que trabajen con consultas de selección utilizando la base
+de datos de Almacen que figura en el campus virtual.
+La actividad busca poner en práctica lo aprendido en clase y que sean capaces de obtener
+un resumen de los datos de una tabla o más tablas haciendo uso de las funciones de
+resumen.
+Obtener los siguientes listados:
+A) Listar la cantidad de clientes.
+
+SELECT COUNT (*) FROM CLIENTES
+
+
+
+B) Listar la cantidad de artículos nacionales.
+
+SELECT COUNT (ORIGEN) FROM ARTICULOS
+WHERE ORIGEN ='N'
+
+
+C) Listar la cantidad de clientes argentinos.
+
+SELECT COUNT (CLIENTES) 
+INNER JOIN CLIENTES AS C ON C.IDLOCALIDAD= PROVINCIA.IDLOCALIDAD
+
+//SEGUIR
+
+
+
+
+D) Listar la cantidad de artículos con stock menor a 20.
+E) Listar la cantidad de clientes de sexo femenino.
+F) Listar el precio máximo de los artículos.
+G) Listar el precio mínimo de los artículos.
+H) Listar la suma del stock total de todos los artículos.
+I) Listar la valorización de todos los artículos. La suma del precio del artículo por la cantidad en
+stock.
+J) Listar la cantidad total vendida de productos.
+K) Listar la facturación total.
+L) Listar el precio promedio de los artículos.
+M) Por cada cliente, listar apellido, nombre y la cantidad de compras realizadas.
+N) Por cada cliente, listar apellido, nombre y la total facturado en concepto de compras.
+Ñ) Por cada país, listar el nombre del país y la cantidad de clientes que viven en él.
+Página 1 de 2
+O) Por cada artículo, listar el nombre del artículo, marca y el total facturado en concepto de ventas.
+P) Por cada categoría, listar el nombre de la categoría y la cantidad de artículos.
+Q) Por cada venta, listar el IDVenta, la fecha y el importe de la venta.
+R) Por cada mes y año, listar el total facturado.
+S) Por cada marca, listar el nombre de la marca y el precio máximo del artículo de cada marca.
+T) Por cada cliente, listar apellido, nombre y la cantidad de compras realizadas. Solo listar aquellos
+clientes que hayan comprado más de una vez.
+U) Por cada artículo, listar el nombre del artículo y la marca. Solo listar aquellos artículos que
+hayan sido vendido 0 veces.
+V) Por cada marca, listar el nombre de la marca y el precio mínimo del artículo de cada marca.
+Sólo de aquellas cuyo precio sea menor a $50.
