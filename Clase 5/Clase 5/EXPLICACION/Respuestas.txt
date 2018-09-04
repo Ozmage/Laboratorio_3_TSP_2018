@@ -82,18 +82,80 @@ GROUP BY L.LOCALIDAD
 -- 11) Por cada socio, listar el nombre y apellido y la cantidad de actividades que realiza cada uno.
 
 
+SELECT S.APELLIDO, S.NOMBRES, COUNT (*) AS CANT
+FROM SOCIOS AS S
+INNER JOIN ACTIVIDADES_X_SOCIO AS AXS ON AXS.LEGAJO =S.LEGAJO
+GROUP BY S.APELLIDO, S.NOMBRES
+
 
 
 -- 12) Igual al anterior pero listar a los socios que sólo realicen una actividad.
+//UN FILTRO DE COLUMNAS CALCULADAS NO SE FILTRA CON WHERE
+//HAVING ES UN FILTRO A UNA COLUMNA CALCULADA (LA CALCULADA DEL SELECT)
+
+
+SELECT S.APELLIDO, S.NOMBRES, COUNT (*) AS CANT
+FROM SOCIOS AS S
+INNER JOIN ACTIVIDADES_X_SOCIO AS AXS ON AXS.LEGAJO =S.LEGAJO
+GROUP BY S.APELLIDO, S.NOMBRES
+HAVING COUNT (*)=1
 
 -- 13) Por cada socio, listar el nombre y apellido y la cantidad de pagos realizados.
 
+//HACER
+
+SELECT S.APELLIDO, S.NOMBRES, COUNT (*) AS CANT FROM PAGOS AS P
+INNER JOIN SOCIOS AS S ON P.LEGAJO =S.LEGAJO
+GROUP BY S.APELLIDO, S.NOMBRES
+
+
 -- 14) Igual al anterior pero solamente listar aquellos socios con cero cantidad de pagos realizados.
+//SI USO INNER NO DEVUELVE LA GENTE QUE TIENE 0
+
+
+SELECT S.APELLIDO, S.NOMBRES, COUNT (P.LEGAJO) AS CANT FROM PAGOS AS P
+RIGHT JOIN SOCIOS AS S ON P.LEGAJO =S.LEGAJO
+GROUP BY S.APELLIDO, S.NOMBRES
+HAVING COUNT (P.LEGAJO) = 0
+
+
+
 
 -- 15) Por cada socio, listar el nombre y apellido y el total abonado en concepto de pagos.
 
+
+SELECT S.APELLIDO , S.NOMBRES, SUM (P.IMPORTE) AS TOTAL FROM PAGOS AS P
+INNER JOIN SOCIOS AS S ON P.LEGAJO=S.LEGAJO
+GROUP BY S.APELLIDO, S.NOMBRES
+
+
 -- 16) Igual al anterior pero sólo listar los socios que hayan abonado más de $1000 en total en concepto de pagos.
+
+SELECT S.APELLIDO , S.NOMBRES, SUM (P.IMPORTE) AS TOTAL FROM PAGOS AS P
+INNER JOIN SOCIOS AS S ON P.LEGAJO=S.LEGAJO
+GROUP BY S.APELLIDO, S.NOMBRES
+
 
 -- 17) Por cada socio, listar el máximo monto abonado en concepto de pagos.
 
+
+SELECT S.APELLIDO , S.NOMBRES, MAX (P.IMPORTE) AS TOTAL FROM PAGOS AS P
+INNER JOIN SOCIOS AS S ON P.LEGAJO=S.LEGAJO
+GROUP BY S.APELLIDO, S.NOMBRES
+
+
 -- 18) La cantidad de socios que realicen alguna actividad en equipo.
+
+SELECT AXS.LEGAJO FROM ACTIVIDADES_X_SOCIO AS AXS
+INNER JOIN ACTIVIDADES AS A ON A.IDACTIVIDAD = AXS.IDACTIVIDAD
+WHERE TIPO='E'
+ORDER BY AXS.LEGAJO ASC
+
+SELECT CONT(TIPO) FROM ACIVIDADES_X_SOCIO AS AVG
+
+
+
+
+
+
+

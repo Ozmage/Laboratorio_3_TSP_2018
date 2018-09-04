@@ -1,5 +1,13 @@
 -- 1) La cantidad de socios
 
+
+SELECT AXS.LEGAJO FROM ACTIVIDADES_X_SOCIO AS AXS
+INNER JOIN ACTIVIDADES AS A ON A.IDACTIVIDAD = AXS.IDACTIVIDAD
+WHERE TIPO='E'
+ORDER BY AXS.LEGAJO ASC
+
+
+
 -- 2) La cantidad de actividades de equipo.
 
 -- 3) La suma de todos los pagos realizados.
